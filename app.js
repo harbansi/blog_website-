@@ -80,18 +80,6 @@ app.get("/posts/:postId",function(req,res){
 });
 
 
-app.post("/delete",function(req,res){
-  const deleteId = req.body.dlt;
-
-  Post.deleteOne({'_id': deleteId},function(err){
-    if(!err){
-      console.log("successfully deleted");
-    }
-    console.log(err);
-  });
-  res.redirect("/");
-  });
-
   let port = process.env.PORT;
   if (port == null || port == "") {
     port = 3000;
