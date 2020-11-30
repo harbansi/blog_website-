@@ -1,0 +1,29 @@
+<%- include("partials/header") -%>
+
+
+<h1>HOME</h1>
+<p><%= paragraphContent %></p>
+
+
+<% postItem.forEach(function(post){ %>
+     <h1> <%= post.title %> </h1>
+     <p>
+        <%= post.content.substring(0,100) +"...";  %>
+        <a href="posts/<%= post._id%>">Read More</a>
+
+    </p>
+
+    <% postItem.forEach(function(deletepost){ %>
+      <form action="/delete" method="POST">
+        <button type="submit" name="dlt" value="<%= deletepost._id %> " onChange="this.form.submit()"><i class="fas fa-trash-alt"></i></button>
+      </form>
+    <% }); %>
+
+
+
+<% }); %>
+
+<a href="/compose" role="button" class="compose_button"><i class="fas fa-plus fa-3x"></i></a>
+
+
+<%- include("partials/footer") -%>
